@@ -4,6 +4,1044 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI 前沿日报 — 2026年4月18日</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  
+  :root {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-card: #1a1a2e;
+    --bg-card-hover: #222240;
+    --border: #2a2a45;
+    --text-primary: #e8e8f0;
+    --text-secondary: #9898b0;
+    --text-muted: #6868880;
+    --accent-blue: #4f8fff;
+    --accent-purple: #a855f7;
+    --accent-green: #22c55e;
+    --accent-orange: #f97316;
+    --accent-pink: #ec4899;
+    --accent-cyan: #06b6d4;
+    --accent-red: #ef4444;
+    --gradient-1: linear-gradient(135deg, #4f8fff 0%, #a855f7 100%);
+    --gradient-2: linear-gradient(135deg, #22c55e 0%, #06b6d4 100%);
+    --gradient-3: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
+    --gradient-4: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    --gradient-5: linear-gradient(135deg, #06b6d4 0%, #4f8fff 100%);
+    --gradient-6: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+    --gradient-7: linear-gradient(135deg, #22c55e 0%, #a855f7 100%);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .hero {
+    position: relative;
+    padding: 60px 24px 40px;
+    text-align: center;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 0%, rgba(79,143,255,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 50%, rgba(168,85,247,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(34,197,94,0.08) 0%, transparent 50%);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-blue), var(--accent-purple), transparent);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(79,143,255,0.1);
+    border: 1px solid rgba(79,143,255,0.2);
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--accent-blue);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+  }
+
+  .hero .subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+  }
+
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  .section-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(79,143,255,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .card-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+
+  .card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .card h3 a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .card h3 a:hover {
+    color: var(--accent-blue);
+  }
+
+  .card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .card-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent-blue);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+
+  .card-link:hover { gap: 10px; }
+
+  /* Leaderboard table */
+  .leaderboard-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .leaderboard-table thead th {
+    background: rgba(79,143,255,0.08);
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .leaderboard-table tbody td {
+    padding: 14px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(42,42,69,0.5);
+  }
+
+  .leaderboard-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .leaderboard-table tbody tr:hover {
+    background: rgba(79,143,255,0.04);
+  }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  .rank-1 { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; }
+  .rank-2 { background: linear-gradient(135deg, #94a3b8, #64748b); color: #000; }
+  .rank-3 { background: linear-gradient(135deg, #cd7c2f, #a0522d); color: #fff; }
+  .rank-other { background: rgba(79,143,255,0.1); color: var(--accent-blue); }
+
+  .model-name {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .provider-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .provider-anthropic { background: rgba(168,85,247,0.15); color: #c084fc; }
+  .provider-google { background: rgba(34,197,94,0.15); color: #4ade80; }
+  .provider-openai { background: rgba(79,143,255,0.15); color: #93bbff; }
+  .provider-meta { background: rgba(6,182,212,0.15); color: #22d3ee; }
+  .provider-xai { background: rgba(239,68,68,0.15); color: #f87171; }
+  .provider-moonshot { background: rgba(249,115,22,0.15); color: #fb923c; }
+  .provider-zhipu { background: rgba(168,85,247,0.15); color: #c084fc; }
+  .provider-deepseek { background: rgba(34,197,94,0.15); color: #4ade80; }
+  .provider-alibaba { background: rgba(249,115,22,0.15); color: #fb923c; }
+  .provider-minimax { background: rgba(236,72,153,0.15); color: #f472b6; }
+
+  .elo-score {
+    font-weight: 700;
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .elo-high { color: var(--accent-green); }
+
+  .strength-tag {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .dual-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .dual-table { grid-template-columns: 1fr; }
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+
+  .table-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .indie-revenue {
+    font-weight: 700;
+    color: var(--accent-green);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .trend-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(34,197,94,0.1);
+    color: var(--accent-green);
+    border: 1px solid rgba(34,197,94,0.2);
+  }
+
+  .stars {
+    color: var(--accent-orange);
+    font-weight: 600;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+
+  .footer a { color: var(--accent-blue); text-decoration: none; }
+
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  .toc a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .toc a:hover {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+    border-color: rgba(79,143,255,0.3);
+  }
+
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(79,143,255,0.08), rgba(168,85,247,0.08));
+    border: 1px solid rgba(79,143,255,0.15);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .highlight-box h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--accent-blue);
+  }
+
+  .highlight-box p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+</style>
 </head>
-<body><p>Loading...</p></body>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">🔬 每日调研</div>
+  <h1>AI 前沿日报</h1>
+  <p class="subtitle">2026年4月18日（周六）— 涵盖 Product Hunt、GitHub Trending、Indie Hackers、模型排行榜、Hacker News、X/Twitter 等多个来源</p>
+  <div class="toc">
+    <a href="#leaderboard">🏆 模型排行榜</a>
+    <a href="#producthunt">🚀 Product Hunt</a>
+    <a href="#github">💻 GitHub Trending</a>
+    <a href="#indiehackers">🔨 Indie Hackers</a>
+    <a href="#hackernews">📰 Hacker News</a>
+    <a href="#xtwitter">🐦 X / Twitter</a>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ==================== LEADERBOARD ==================== -->
+<section class="section" id="leaderboard">
+  <div class="section-header">
+    <div class="section-icon" style="background: var(--gradient-1);">🏆</div>
+    <div>
+      <div class="section-title">模型排行榜</div>
+      <div class="section-desc">LMSYS Chatbot Arena & HuggingFace Open LLM Leaderboard — 2026年4月最新数据</div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h4>📊 本月关键趋势</h4>
+    <p>
+      <strong>「超级智能层」突破：</strong>多个模型首次突破 1500 Elo 大关。Anthropic Claude 4.6 系列横扫 Chatbot Arena 综合与代码双榜。
+      开源阵营中 <strong>Kimi K2.5</strong>（Moonshot AI）登顶 HuggingFace 榜单，DeepSeek V3.2 与 Qwen 3.5 紧随其后。
+      Meta 的 <strong>Muse Spark</strong> 空降 Arena 前三，成为本月最大黑马。
+    </p>
+  </div>
+
+  <div class="dual-table">
+    <!-- LMSYS Arena -->
+    <div>
+      <div class="table-title">⚔️ LMSYS Chatbot Arena — 综合排名</div>
+      <table class="leaderboard-table">
+        <thead>
+          <tr><th>排名</th><th>模型</th><th>厂商</th><th>Elo</th><th>强项</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rank-badge rank-1">1</span></td>
+            <td class="model-name">Claude Opus 4.6 (Thinking)</td>
+            <td><span class="provider-badge provider-anthropic">Anthropic</span></td>
+            <td class="elo-score elo-high">1502</td>
+            <td class="strength-tag">复杂推理 & 逻辑</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-2">2</span></td>
+            <td class="model-name">Claude Opus 4.6</td>
+            <td><span class="provider-badge provider-anthropic">Anthropic</span></td>
+            <td class="elo-score elo-high">1496</td>
+            <td class="strength-tag">对话 & 编程</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-3">3</span></td>
+            <td class="model-name">Muse Spark</td>
+            <td><span class="provider-badge provider-meta">Meta</span></td>
+            <td class="elo-score">1495</td>
+            <td class="strength-tag">创意写作 & 速度</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">4</span></td>
+            <td class="model-name">Gemini 3.1 Pro Preview</td>
+            <td><span class="provider-badge provider-google">Google</span></td>
+            <td class="elo-score">1493</td>
+            <td class="strength-tag">多模态 & 长上下文</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">5</span></td>
+            <td class="model-name">Gemini 3 Pro</td>
+            <td><span class="provider-badge provider-google">Google</span></td>
+            <td class="elo-score">1486</td>
+            <td class="strength-tag">Agent 可靠性</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">6</span></td>
+            <td class="model-name">Grok 4.20 Beta 1</td>
+            <td><span class="provider-badge provider-xai">xAI</span></td>
+            <td class="elo-score">1485</td>
+            <td class="strength-tag">实时信息 & 个性</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">7</span></td>
+            <td class="model-name">GPT-5.4 High</td>
+            <td><span class="provider-badge provider-openai">OpenAI</span></td>
+            <td class="elo-score">1481</td>
+            <td class="strength-tag">Computer Use</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">8</span></td>
+            <td class="model-name">Grok 4.20 Reasoning</td>
+            <td><span class="provider-badge provider-xai">xAI</span></td>
+            <td class="elo-score">1479</td>
+            <td class="strength-tag">深度思维链</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">9</span></td>
+            <td class="model-name">GPT-5.2 Chat</td>
+            <td><span class="provider-badge provider-openai">OpenAI</span></td>
+            <td class="elo-score">1476</td>
+            <td class="strength-tag">通用稳定性</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">10</span></td>
+            <td class="model-name">Gemini 3 Flash</td>
+            <td><span class="provider-badge provider-google">Google</span></td>
+            <td class="elo-score">1474</td>
+            <td class="strength-tag">效率 & 低延迟</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- HuggingFace Open LLM -->
+    <div>
+      <div class="table-title">🤗 HuggingFace Open LLM Leaderboard — 开源模型</div>
+      <table class="leaderboard-table">
+        <thead>
+          <tr><th>排名</th><th>模型</th><th>厂商</th><th>参数</th><th>强项</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rank-badge rank-1">1</span></td>
+            <td class="model-name">Kimi K2.5</td>
+            <td><span class="provider-badge provider-moonshot">Moonshot AI</span></td>
+            <td>1T/32B MoE</td>
+            <td class="strength-tag">推理 & 指令遵循</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-2">2</span></td>
+            <td class="model-name">GLM-5</td>
+            <td><span class="provider-badge provider-zhipu">Zhipu AI</span></td>
+            <td>744B</td>
+            <td class="strength-tag">通用知识 & 数学</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-3">3</span></td>
+            <td class="model-name">DeepSeek V3.2</td>
+            <td><span class="provider-badge provider-deepseek">DeepSeek</span></td>
+            <td>685B/37B MoE</td>
+            <td class="strength-tag">编程 & 效率</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">4</span></td>
+            <td class="model-name">Qwen 3.5</td>
+            <td><span class="provider-badge provider-alibaba">Alibaba</span></td>
+            <td>397B/17B MoE</td>
+            <td class="strength-tag">多模态 & 1M 上下文</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">5</span></td>
+            <td class="model-name">MiniMax M2.5</td>
+            <td><span class="provider-badge provider-minimax">MiniMax</span></td>
+            <td>230B</td>
+            <td class="strength-tag">对话细腻度</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top: 24px;">
+        <div class="table-title">🧪 分项基准测试冠军</div>
+        <table class="leaderboard-table">
+          <thead>
+            <tr><th>基准</th><th>冠军</th><th>得分</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>推理 (GPQA Diamond)</td><td class="model-name">Qwen 3.5</td><td class="elo-score elo-high">88.4%</td></tr>
+            <tr><td>编程 (SWE-bench)</td><td class="model-name">GLM-5</td><td class="elo-score elo-high">77.8%</td></tr>
+            <tr><td>数学 (AIME 2025)</td><td class="model-name">Kimi K2.5</td><td class="elo-score elo-high">96.1%</td></tr>
+            <tr><td>指令遵循 (IFEval)</td><td class="model-name">Kimi K2.5</td><td class="elo-score elo-high">92.6%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coding Leaderboard -->
+  <div style="margin-top: 24px;">
+    <div class="table-title">⌨️ LMSYS Coding Arena — 编程专项排名（Anthropic 三冠王）</div>
+    <table class="leaderboard-table">
+      <thead>
+        <tr><th>排名</th><th>模型</th><th>厂商</th><th>Elo</th><th>备注</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td class="model-name">Claude Opus 4.6</td>
+          <td><span class="provider-badge provider-anthropic">Anthropic</span></td>
+          <td class="elo-score elo-high">1549</td>
+          <td class="strength-tag">首个突破 1500 的编程模型</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td class="model-name">Claude Opus 4.6 Thinking</td>
+          <td><span class="provider-badge provider-anthropic">Anthropic</span></td>
+          <td class="elo-score elo-high">1545</td>
+          <td class="strength-tag">深度推理编程</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td class="model-name">Claude Sonnet 4.6</td>
+          <td><span class="provider-badge provider-anthropic">Anthropic</span></td>
+          <td class="elo-score">1523</td>
+          <td class="strength-tag">性价比之王</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-other">4</span></td>
+          <td class="model-name">GPT-5.4 Pro</td>
+          <td><span class="provider-badge provider-openai">OpenAI</span></td>
+          <td class="elo-score">1457</td>
+          <td class="strength-tag">—</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-other">5</span></td>
+          <td class="model-name">DeepSeek R1 (v4)</td>
+          <td><span class="provider-badge provider-deepseek">DeepSeek</span></td>
+          <td class="elo-score">1445</td>
+          <td class="strength-tag">开源编程最强</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== PRODUCT HUNT ==================== -->
+<section class="section" id="producthunt">
+  <div class="section-header">
+    <div class="section-icon" style="background: var(--gradient-3);">🚀</div>
+    <div>
+      <div class="section-title">Product Hunt 热门 AI 产品</div>
+      <div class="section-desc">2026年4月最新上线 — 聚焦 Agentic 工作流、本地 AI、多模态生产力</div>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <span class="card-tag" style="background: rgba(249,115,22,0.15); color: var(--accent-orange);">🏅 Product of the Day</span>
+      <h3><a href="https://www.producthunt.com/posts/fathom-3-0" target="_blank">Fathom 3.0</a></h3>
+      <p>会议助手重大更新：无需 Bot 加入会议（使用原生平台 API），直接集成 ChatGPT 和 Claude 提供实时洞察。</p>
+      <div class="card-meta">
+        <span>📅 Apr 15</span>
+        <span>🏷️ 会议 AI</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(168,85,247,0.15); color: var(--accent-purple);">🎨 设计革命</span>
+      <h3><a href="https://www.producthunt.com/posts/figma-for-agents" target="_blank">Figma for Agents</a></h3>
+      <p>专为 AI Agent 打造的设计环境，让 Agent 直接在公司现有设计系统中进行设计操作。</p>
+      <div class="card-meta">
+        <span>📅 Apr 14</span>
+        <span>🏷️ 设计工具</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(34,197,94,0.15); color: var(--accent-green);">🤖 模型发布</span>
+      <h3><a href="https://www.producthunt.com/posts/claude-opus-4-7" target="_blank">Claude Opus 4.7 & Claude Code</a></h3>
+      <p>Anthropic 本月连发：Claude Code Routines（编程自动驾驶）+ Opus 4.7 增强推理能力，主导 Agentic Coding 赛道。</p>
+      <div class="card-meta">
+        <span>📅 Apr 15</span>
+        <span>🏷️ 模型 / 开发工具</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(6,182,212,0.15); color: var(--accent-cyan);">🗣️ 语音 AI</span>
+      <h3><a href="https://www.producthunt.com/posts/novavoice" target="_blank">NovaVoice</a></h3>
+      <p>智能听写 + AI 助手，支持全语音控制 macOS/iOS 应用，解放双手的生产力工具。</p>
+      <div class="card-meta">
+        <span>📅 Apr 7</span>
+        <span>🏷️ 语音 / 生产力</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(236,72,153,0.15); color: var(--accent-pink);">🌐 网站生成</span>
+      <h3><a href="https://www.producthunt.com/posts/brila" target="_blank">Brila</a></h3>
+      <p>从 Google Maps 真实评价中提取数据和情感，一键生成高转化率单页网站。</p>
+      <div class="card-meta">
+        <span>📅 Apr 1</span>
+        <span>🏷️ 营销 / AI 生成</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(79,143,255,0.15); color: var(--accent-blue);">📊 数据库</span>
+      <h3><a href="https://www.producthunt.com/posts/db-explorer" target="_blank">DB Explorer</a></h3>
+      <p>AI-first 数据库客户端，用自然语言代替复杂 SQL 查询和管理数据库。开发者的新宠。</p>
+      <div class="card-meta">
+        <span>📅 Apr 2026</span>
+        <span>🏷️ 开发工具</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GITHUB TRENDING ==================== -->
+<section class="section" id="github">
+  <div class="section-header">
+    <div class="section-icon" style="background: var(--gradient-5);">💻</div>
+    <div>
+      <div class="section-title">GitHub Trending — AI 热门仓库</div>
+      <div class="section-desc">2026年4月趋势：个人 AI Agent、本地优先、可视化编排</div>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <span class="card-tag" style="background: rgba(249,115,22,0.15); color: var(--accent-orange);">⭐ 210K+ Stars</span>
+      <h3><a href="https://github.com/openclaw/openclaw" target="_blank">OpenClaw</a></h3>
+      <p>2026 年最火仓库。本地运行的个人 AI 助手 / 数字分身，连接 50+ 服务（WhatsApp、Slack、iMessage），数据永不离开本机。</p>
+      <div class="card-meta">
+        <span class="stars">⭐ 210,000+</span>
+        <span>🏷️ Personal Agent</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(168,85,247,0.15); color: var(--accent-purple);">⭐ 165K+ Stars</span>
+      <h3><a href="https://github.com/ollama/ollama" target="_blank">Ollama</a></h3>
+      <p>「本地 AI 的 Docker」— 一条命令运行 Llama 4、DeepSeek-V3 等大模型。v0.19 新增 Apple Silicon MLX 加速。</p>
+      <div class="card-meta">
+        <span class="stars">⭐ 165,000+</span>
+        <span>🏷️ 本地推理</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(34,197,94,0.15); color: var(--accent-green);">⭐ 120K+ Stars</span>
+      <h3><a href="https://github.com/open-webui/open-webui" target="_blank">Open WebUI</a></h3>
+      <p>自托管 ChatGPT 替代方案，已进化为全功能套件：语音通话、RAG 管线、社区市场。</p>
+      <div class="card-meta">
+        <span class="stars">⭐ 120,000+</span>
+        <span>🏷️ 自托管 UI</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(6,182,212,0.15); color: var(--accent-cyan);">🔥 Trending</span>
+      <h3><a href="https://github.com/anthropics/claude-code" target="_blank">Claude Code</a></h3>
+      <p>Anthropic 的终端 Agentic 编程工具。不只建议代码，而是跨整个代码库推理、执行测试、自主重构。</p>
+      <div class="card-meta">
+        <span>🏷️ Agentic Coding</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(236,72,153,0.15); color: var(--accent-pink);">🔥 Trending</span>
+      <h3><a href="https://github.com/deepseek-ai/DeepSeek-V3" target="_blank">DeepSeek-V3</a></h3>
+      <p>开源 MoE 模型，性能媲美闭源前沿模型，免费商用。正在重塑 AI 创业的经济模型。</p>
+      <div class="card-meta">
+        <span>🏷️ 开源模型</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(79,143,255,0.15); color: var(--accent-blue);">🔥 Trending</span>
+      <h3><a href="https://github.com/langgenius/dify" target="_blank">Dify</a></h3>
+      <p>全栈 AI 应用开发平台，可视化管理 Prompt、数据集和多 Agent 工作流。LLMOps 标杆。</p>
+      <div class="card-meta">
+        <span>🏷️ LLMOps / Agent 编排</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(249,115,22,0.15); color: var(--accent-orange);">🔥 Trending</span>
+      <h3><a href="https://github.com/infiniflow/ragflow" target="_blank">RAGFlow</a></h3>
+      <p>企业级 RAG 引擎，专攻复杂文档理解和引用。处理大规模企业知识库的首选。</p>
+      <div class="card-meta">
+        <span class="stars">⭐ 70,000+</span>
+        <span>🏷️ RAG / 企业</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(34,197,94,0.15); color: var(--accent-green);">🆕 New</span>
+      <h3><a href="https://github.com/google-gemini/gemini-cli" target="_blank">Gemini CLI</a></h3>
+      <p>Google 官方终端 AI 工具，将多模态 AI 带入终端和 CI/CD 管线。Claude Code 的直接竞品。</p>
+      <div class="card-meta">
+        <span>🏷️ CLI / 开发工具</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== INDIE HACKERS ==================== -->
+<section class="section" id="indiehackers">
+  <div class="section-header">
+    <div class="section-icon" style="background: var(--gradient-2);">🔨</div>
+    <div>
+      <div class="section-title">Indie Hackers — AI 独立开发者动态</div>
+      <div class="section-desc">「一人独角兽」时代 — 从 GPT Wrapper 到 Agentic 垂直 SaaS</div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h4>💡 2026 年 4 月社区趋势</h4>
+    <p>
+      <strong>Vibe Coding 全面普及：</strong>用自然语言生成完整多页应用（Bolt.new / Lovable / NxCode）。
+      <strong>AEO（Answer Engine Optimization）</strong>取代传统 SEO 成为新赛道。
+      <strong>AI Agent Swarm</strong>（多 Agent 协作）成为热门架构。
+      社区最受尊敬的创始人标准：<strong>零员工 + 80%+ 利润率</strong>。
+    </p>
+  </div>
+
+  <table class="leaderboard-table">
+    <thead>
+      <tr><th>项目</th><th>创始人</th><th>收入</th><th>赛道</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="model-name">BoredHumans</td>
+        <td>Nick Dobos</td>
+        <td class="indie-revenue">$733K/月 ($8.8M ARR)</td>
+        <td>AI 工具集（100+ 工具）</td>
+      </tr>
+      <tr>
+        <td class="model-name">Photo AI</td>
+        <td>Pieter Levels</td>
+        <td class="indie-revenue">$1M+ ARR</td>
+        <td>AI 摄影 / 社交媒体</td>
+      </tr>
+      <tr>
+        <td class="model-name">TypingMind</td>
+        <td>Tony Dinh</td>
+        <td class="indie-revenue">$50K+ MRR</td>
+        <td>AI Chat 界面 / OS</td>
+      </tr>
+      <tr>
+        <td class="model-name">BannerBear</td>
+        <td>Jon Yongfook</td>
+        <td class="indie-revenue">$50K+ MRR</td>
+        <td>营销自动化 API</td>
+      </tr>
+      <tr>
+        <td class="model-name">KNOWIDEA</td>
+        <td>Yatharth Sejpal</td>
+        <td class="indie-revenue">$41K/月 ($500K ARR)</td>
+        <td>企业决策智能</td>
+      </tr>
+      <tr>
+        <td class="model-name">Cal AI</td>
+        <td>—</td>
+        <td class="indie-revenue">$30M+ 总收入</td>
+        <td>AI 营养 / 健康追踪</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="cards-grid" style="margin-top: 24px;">
+    <div class="card">
+      <span class="card-tag" style="background: rgba(34,197,94,0.15); color: var(--accent-green);">🔥 热门赛道</span>
+      <h3>AEO — Answer Engine Optimization</h3>
+      <p>随着传统 SEO 衰落，帮助品牌在 AI 回答引擎（Perplexity、SearchGPT）中排名的工具成为新金矿。有创始人在写代码前就获得 $8,400 预收入。</p>
+    </div>
+    <div class="card">
+      <span class="card-tag" style="background: rgba(168,85,247,0.15); color: var(--accent-purple);">🤖 新架构</span>
+      <h3>AI Agent Swarm（多 Agent 协作）</h3>
+      <p>不再是单 Prompt 机器人，而是 10-20 个专业 Agent 协同工作。热门项目：模拟不同 VC 人格的 20-Agent 创业路演压力测试。</p>
+    </div>
+    <div class="card">
+      <span class="card-tag" style="background: rgba(249,115,22,0.15); color: var(--accent-orange);">💰 高利润</span>
+      <h3>垂直 AI — 「不性感」行业</h3>
+      <p>法律 AI（预测合同成本）、本地商家 AI 语音助手（24/7 预约）— 单人运营可达 $5K-$15K MRR。Faceless Content 频道年入 $1M+。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HACKER NEWS ==================== -->
+<section class="section" id="hackernews">
+  <div class="section-header">
+    <div class="section-icon" style="background: var(--gradient-6);">📰</div>
+    <div>
+      <div class="section-title">Hacker News 热点</div>
+      <div class="section-desc">2026年4月 — Agentic AI 发布、安全框架、哲学反思</div>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <span class="card-tag" style="background: rgba(249,115,22,0.15); color: var(--accent-orange);">🔥 1900+ Points</span>
+      <h3><a href="https://news.ycombinator.com" target="_blank">Claude Opus 4.7 发布</a></h3>
+      <p>本月最热帖。聚焦「长期推理稳定性」，大幅减少 Agentic 工作流中的推理漂移问题。</p>
+      <div class="card-meta">
+        <span>📅 Apr 15</span>
+        <span>🏷️ Anthropic</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(239,68,68,0.15); color: var(--accent-red);">🛡️ 1500+ Points</span>
+      <h3><a href="https://news.ycombinator.com" target="_blank">Project Glasswing — Anthropic 安全框架</a></h3>
+      <p>为关键基础设施防御 AI 驱动攻击的新框架，引入 Agent 操作的「确定性沙箱」机制。引发大量讨论。</p>
+      <div class="card-meta">
+        <span>📅 Apr 2026</span>
+        <span>🏷️ AI 安全</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(34,197,94,0.15); color: var(--accent-green);">📈 1200+ Points</span>
+      <h3><a href="https://news.ycombinator.com" target="_blank">Qwen3.6-35B-A3B — 开源 Agent 新星</a></h3>
+      <p>Alibaba 开源模型，声称在编程任务上匹配 GPT-4o，专为 Agentic 场景优化，可靠执行多步终端命令。</p>
+      <div class="card-meta">
+        <span>📅 Apr 2026</span>
+        <span>🏷️ 开源模型</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(236,72,153,0.15); color: var(--accent-pink);">💭 深度讨论</span>
+      <h3><a href="https://news.ycombinator.com" target="_blank">「The Future of Everything Is Lies, I Guess」</a></h3>
+      <p>Jepsen 作者 Aphyr 的系列长文，探讨在数字证据不再可信的世界中的心理和社会危害。本月最受关注的长文。</p>
+      <div class="card-meta">
+        <span>🏷️ 哲学 / 社会影响</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(6,182,212,0.15); color: var(--accent-cyan);">🛠️ Show HN</span>
+      <h3><a href="https://news.ycombinator.com" target="_blank">Darkbloom — 本地加密 AI 推理</a></h3>
+      <p>在局域网内利用闲置 Mac 硬件运行私密加密 AI 推理。480+ points 的热门 Show HN。</p>
+      <div class="card-meta">
+        <span>📅 Apr 2026</span>
+        <span>🏷️ 隐私 / 本地 AI</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(79,143,255,0.15); color: var(--accent-blue);">🛠️ 开发工具</span>
+      <h3><a href="https://news.ycombinator.com" target="_blank">Crit — AI 代码审查 CLI</a></h3>
+      <p>审查 AI 编程 Agent 输出的新工具，在代码进入 PR 前进行标注和「推回」，解决仓库中 AI Slop 泛滥问题。</p>
+      <div class="card-meta">
+        <span>📅 Apr 2026</span>
+        <span>🏷️ 代码质量</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== X / TWITTER ==================== -->
+<section class="section" id="xtwitter">
+  <div class="section-header">
+    <div class="section-icon" style="background: var(--gradient-4);">🐦</div>
+    <div>
+      <div class="section-title">X / Twitter AI 热点</div>
+      <div class="section-desc">2026年4月 — SpaceX 收购 xAI、Grok API 发布、算法革新</div>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <span class="card-tag" style="background: rgba(239,68,68,0.15); color: var(--accent-red);">💥 重磅</span>
+      <h3><a href="https://x.ai" target="_blank">SpaceX 以 $2500 亿收购 xAI</a></h3>
+      <p>本月最大新闻。合并后估值约 $1.25 万亿。Grok AI 将整合进 Starlink 客服、SpaceX 火星飞船导航等全生态。</p>
+      <div class="card-meta">
+        <span>📅 Apr 2026</span>
+        <span>🏷️ 并购</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(6,182,212,0.15); color: var(--accent-cyan);">🎙️ 今日发布</span>
+      <h3><a href="https://x.ai" target="_blank">Grok STT & TTS API 正式发布</a></h3>
+      <p>支持 25+ 语言、说话人分离、词级时间戳。定价 $0.10-$0.20/小时，号称业界最低。与 Tesla 车载语音同源技术。</p>
+      <div class="card-meta">
+        <span>📅 Apr 18（今天）</span>
+        <span>🏷️ 语音 API</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(168,85,247,0.15); color: var(--accent-purple);">🧠 算法变革</span>
+      <h3><a href="https://x.com" target="_blank">X 算法全面切换 Grok Transformer</a></h3>
+      <p>告别旧版互动指标排名，新模型「阅读」帖子语义内容预测用户兴趣。145,000 个 SimClusters 兴趣组。跑题发帖惩罚加重。</p>
+      <div class="card-meta">
+        <span>📅 Apr 2026</span>
+        <span>🏷️ 推荐算法</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(249,115,22,0.15); color: var(--accent-orange);">💰 X Money</span>
+      <h3><a href="https://x.com" target="_blank">X Money 支付平台公测</a></h3>
+      <p>集成 Grok 实时欺诈检测和个性化消费洞察。美国参议院质疑其发行稳定币和社交数据与金融服务整合的风险。</p>
+      <div class="card-meta">
+        <span>📅 Apr 2026</span>
+        <span>🏷️ 金融科技</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(236,72,153,0.15); color: var(--accent-pink);">🎨 病毒传播</span>
+      <h3>Grok Imagine — Chibi 模板爆火</h3>
+      <p>Musk 置顶 Chibi 风格头像后引发全平台 AI 生成动漫头像热潮。xAI 游戏工作室确认年底发布首款全 AI 生成游戏。</p>
+      <div class="card-meta">
+        <span>📅 Apr 2026</span>
+        <span>🏷️ AI 生成内容</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-tag" style="background: rgba(79,143,255,0.15); color: var(--accent-blue);">⚖️ 监管</span>
+      <h3>xAI 起诉科罗拉多州 AI 法规</h3>
+      <p>挑战该州「算法歧视」新法规，主张侵犯第一修正案权利。同时积极申请 FedRAMP High 认证进军联邦政府市场。</p>
+      <div class="card-meta">
+        <span>📅 Apr 2026</span>
+        <span>🏷️ 法律 / 监管</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>📡 数据来源：<a href="https://chat.lmsys.org" target="_blank">LMSYS Chatbot Arena</a> · <a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard" target="_blank">HuggingFace Open LLM Leaderboard</a> · <a href="https://www.producthunt.com" target="_blank">Product Hunt</a> · <a href="https://github.com/trending" target="_blank">GitHub Trending</a> · <a href="https://www.indiehackers.com" target="_blank">Indie Hackers</a> · <a href="https://news.ycombinator.com" target="_blank">Hacker News</a> · <a href="https://x.com" target="_blank">X / Twitter</a></p>
+  <p style="margin-top: 8px; color: var(--text-muted);">由 法拉利 🏎️ 自动调研生成 · 2026-04-18 16:54 CST</p>
+</div>
+
+</body>
 </html>
